@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="./static/index.css">
+        <style>
+            *{
+                color:white;
+            }
+
+            body{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-image:url("https://images8.alphacoders.com/130/thumb-1920-1306764.jpg");
+                background-repeat: no-repeat;
+                background-size:cover;
+            }
+
+            .container{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: black;
+                width: 700px;
+                margin: auto;
+                padding: 20px;
+                border-radius: 50px;
+                border: 3px solid white;
+                margin: 3% 0;
+            }
+
+            .input-box{
+                background-color: black;
+                border-color: white;
+                width: 100px;
+                padding: 10px;
+                border-radius: 50px;
+                font-size: 21px;
+                color: white;
+                margin-bottom: 15px;
+            }
+
+            h1{
+                font-size: 30px;
+            }
+
+            .buttons{
+                display: flex;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .botaolog{
+                margin: 0 30px;
+            }
+
+            .history-box{
+                border: 1px solid white;
+                width: 300px;
+                border-radius: 20px;
+                font-size: 18px;
+                padding: 10px;
+                margin: 10px 0;
+                word-wrap: break-word;
+            }
+        </style>
+    </head>
+<body>
+    <main class="container">
+        <h1>Histórico de Ações de Lúcifer</h1>
+
+        <form action="{{ url_for('criarChat') }}" method="post">
+            <input class="botaoestilizado" type="submit" value="Adicionar">
+        </form><br>
+
+        {% for chat_atual in chat_hist %}
+            <div class="history-box">
+                ID: {{ chat_atual.id }} <br>
+                Chat: {{ chat_atual.chat }}
+            </div>
+                <div class="buttons">
+                    <form action="{{ url_for('editarChat') }}" method="post">
+                        <input type="hidden" name="texto" value="{{ chat_atual.chat }}">
+                        <input type="hidden" name="identidade" value="{{ chat_atual.id }}">
+                        <input class="botaoestilizado botaolog" type="submit" value="Editar">
+                    </form>
+
+                    <form action="{{ url_for('deletarChat') }}" method="post">
+                        <input type="hidden" name="identidade" value="{{ chat_atual.id }}">
+                        <input class="botaoestilizado botaolog" type="submit" value="Deletar">
+                    </form>
+                </div>
+                <br><br>
+        {% endfor %}<br>
+
+        </div>
+
+        <div class="buttons">
+            <a  href="https://pedropedro.pythonanywhere.com/usuario"><button class="botaoestilizado botaolog">Administradores</button></a>
+            <a href="https://pedropedro.pythonanywhere.com/logout"><button class="botaoestilizado botaolog">Logout</button></a>
+            <a href="https://pedropedro.pythonanywhere.com/palacio-de-lucifer"><button class="botaoestilizado botaolog">Voltar à Batalha</button></a>
+        <div>
+    </main>
+</body>
+</html>

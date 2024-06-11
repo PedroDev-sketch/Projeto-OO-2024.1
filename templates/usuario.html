@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
+    <style>
+        *{
+            color:white;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-image:url("https://picfiles.alphacoders.com/102/10229.jpg");
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: black;
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 3px solid white;
+            border-radius: 50px;
+            margin: 3% 0;
+        }
+
+        .input-box{
+            background-color: black;
+            border-color: white;
+            width: 250px;
+            padding: 10px;
+            border-radius: 50px;
+            font-size: 21px;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        h1{
+            font-size: 30px;
+        }
+
+        h3{
+            font-size: 22px;
+        }
+
+        .input-text{
+            font-size: 19px;
+            margin-bottom: 5px;
+        }
+
+        .admin-box{
+            border: 1px solid white;
+            width: 300px;
+            border-radius: 20px;
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px 0;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <div class="signup">
+            <h1>Adicionar Administrador</h1>
+            <form action="{{ url_for('addAdmin') }}" method="POST">
+                <p class="input-text">Qual seu nome?</p>
+                <input class="input-box" type="text" name="nome"> <br>
+
+                <p class="input-text">Qual sua senha?</p>
+                <input class="input-box" type="text" name="senha"> <br><br>
+                <input class ="botaoestilizado" type="submit" value="Adicionar">
+            </form>
+
+            <br>
+            <a href="https://pedropedro.pythonanywhere.com/history-log"><button class="botaoestilizado">Voltar</button></a>
+        </div>
+        <div>
+            <br>
+            <h3>Administradores:</h3>
+            {% for user in usuarios %}
+            <div class="admin-box">
+            ID: {{ user.id }}, Nome: {{ user.nome }}, Senha: {{ user.senha }}
+            </div>
+            <br>
+            {% endfor %}
+        </div>
+    </main>
+
+</body>
+</html>

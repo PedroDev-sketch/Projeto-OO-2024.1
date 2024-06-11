@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+        <style>
+            body{
+                color: white;
+                background-image:url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/433c78d9-d308-4b38-9ced-ec10f3c3bc88/dffwudm-fac7b763-e30c-4416-9389-de91518cff61.png/v1/fill/w_1280,h_768,q_80,strp/bloody_cathedral___made_with_ai__by_kroniksan_dffwudm-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQzM2M3OGQ5LWQzMDgtNGIzOC05Y2VkLWVjMTBmM2MzYmM4OFwvZGZmd3VkbS1mYWM3Yjc2My1lMzBjLTQ0MTYtOTM4OS1kZTkxNTE4Y2ZmNjEucG5nIiwiaGVpZ2h0IjoiPD03NjgiLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS53YXRlcm1hcmsiXSwid21rIjp7InBhdGgiOiJcL3dtXC80MzNjNzhkOS1kMzA4LTRiMzgtOWNlZC1lYzEwZjNjM2JjODhcL2tyb25pa3Nhbi00LnBuZyIsIm9wYWNpdHkiOjk1LCJwcm9wb3J0aW9ucyI6MC40NSwiZ3Jhdml0eSI6ImNlbnRlciJ9fQ.78DI0cpSiInocoXOEQgptRB2CwkSFx54kD_gEI4_4uc");
+                background-repeat: no-repeat;
+                background-size:cover;
+            }
+
+            .maindiv{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                font-size: 23px;
+            }
+
+            .lucifer-fight-photo{
+                width: 200px;
+            }
+
+            .lucifer-fight-photo-frame{
+                width: 200px;
+                height: 269px;
+                border-radius: 90%;
+                overflow: hidden;
+            }
+
+            .lucifer-decorating-box{
+                background-color: black;
+                width: 300px;
+                border: 3px solid white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px;
+                border-radius: 70px;
+            }
+
+            .main-fight-box{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 800px;
+                background-color: black;
+                border: 3px solid white;
+                margin: 30px 0 60px 0;
+                border-radius: 50px;
+                padding: 10px;
+            }
+
+            .main-title{
+                font-size: 27px;
+            }
+
+            .input-box{
+                background-color: black;
+                border-color: white;
+                width: 400px;
+                padding: 10px;
+                border-radius: 50px;
+                font-size: 21px;
+                color: white;
+                margin-bottom: 15px;
+            }
+
+            .answer{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <a href="https://pedropedro.pythonanywhere.com/login"><button class="botaoestilizado">History-Log</button></a>
+        <a href="https://pedropedro.pythonanywhere.com/"><button class="botaoestilizado">Voltar</button></a>
+        <main class="maindiv">
+            <div class="lucifer-decorating-box">
+                <div class="lucifer-fight-photo-frame">
+                    <img class = "lucifer-fight-photo" src = "https://d3nvbf5pqk2vjh.cloudfront.net/cgccomics/monthly_2021_04/lucifer.jpg.5df08a53bce48c4fc6b62a9469bbcb7c.jpg">
+                </div>
+            </div>
+
+            <div class="main-fight-box">
+                <form action="{{ url_for('chatgpt') }}" method="post">
+                    <p class="main-title">Qual será a sua primeira ação?</p>
+                    <input class="input-box" type="text" name="questao"> <br>
+                    <input class="botaoestilizado" type="submit">
+                </form>
+               <p class="answer">{{ resposta }}</p>
+            </div>
+       </main>
+    </body>
+</html>
